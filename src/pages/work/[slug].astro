@@ -1,0 +1,159 @@
+---
+import { getEmDashEntry } from "emdash";
+import { Image, PortableText } from "emdash/ui";
+import Base from "../../layouts/Base.astro";
+
+const { slug } = Astro.params;
+if (!slug) return Astro.redirect("/404");
+
+const { entry: project, cacheHint } = await getEmDashEntry("projects", slug);
+if (!project) return Astro.redirect("/404");
+
+if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
+
+const title = project.data.title || "Untitled";
+const summary = project.data.summary || "";
+const imageUrl =
+	typeof project.data.featured_image === "object"
+		? project.data.featured_image?.src
+		: undefined;
+---
+
+<Base title={title} description={summary} image={imageUrl} type="article">
+	<article class="project-page">
+		<header class="project-header">
+			<a href="/work" class="back-link">Work</a>
+			<h1 {...project.edit.title}>{title}</h1>
+			<div class="project-meta">
+				{project.data.client && <span>{project.data.client}</span>}
+				{project.data.client && project.data.year && <span>/</span>}
+				{project.data.year && <span>{project.data.year}</span>}
+			</div>
+			{summary && <p {...project.edit.summary}>{summary}</p>}
+			{
+				project.data.url && (
+					<a
+						class="project-link"
+						href={project.data.url}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Open project
+					</a>
+				)
+			}
+		</header>
+
+		{
+			project.data.featured_image && (
+				<div class="project-image" {...project.edit.featured_image}>
+					<Image image={project.data.featured_image} />
+				</div>
+			)
+		}
+
+		{
+			project.data.content && (
+				<section class="project-content" {...project.edit.content}>
+					<PortableText value={project.data.content} />
+				</section>
+			)
+		}
+	</article>
+</Base>
+
+<style>
+	.project-page {
+		max-width: var(--wide-width);
+		margin: 0 auto;
+		padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-4xl);
+	}
+
+	.project-header {
+		max-width: 860px;
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.back-link {
+		display: inline-block;
+		margin-bottom: var(--spacing-lg);
+		color: var(--color-muted);
+		font-size: var(--font-size-sm);
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	.back-link:hover {
+		color: var(--color-text);
+	}
+
+	.project-header h1 {
+		margin-bottom: var(--spacing-md);
+		font-size: var(--font-size-4xl);
+		font-weight: 650;
+		letter-spacing: 0;
+	}
+
+	.project-meta {
+		display: flex;
+		gap: var(--spacing-sm);
+		margin-bottom: var(--spacing-lg);
+		color: var(--color-accent);
+		font-size: var(--font-size-sm);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.project-header p {
+		max-width: 760px;
+		margin-bottom: var(--spacing-xl);
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+	}
+
+	.project-link {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
+		padding: 0 var(--spacing-lg);
+		color: var(--color-bg);
+		background: var(--color-text);
+		border-radius: var(--radius);
+		text-decoration: none;
+		font-size: var(--font-size-sm);
+		font-weight: 700;
+	}
+
+	.project-image {
+		margin-bottom: var(--spacing-3xl);
+		overflow: hidden;
+		border-radius: 8px;
+		border: 1px solid var(--color-border);
+		background: var(--color-surface);
+	}
+
+	.project-image :global(img) {
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+	}
+
+	.project-content {
+		max-width: 760px;
+		font-size: var(--font-size-lg);
+		line-height: 1.7;
+		color: var(--color-muted);
+	}
+
+	.project-content :global(p) {
+		margin-bottom: 1.3em;
+	}
+
+	.project-content :global(h2) {
+		margin-top: 2em;
+		margin-bottom: 0.65em;
+		font-size: var(--font-size-2xl);
+		color: var(--color-text);
+	}
+</style>

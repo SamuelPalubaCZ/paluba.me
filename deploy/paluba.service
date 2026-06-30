@@ -1,0 +1,20 @@
+[Unit]
+Description=paluba.me Astro/EmDash site
+After=network.target
+
+[Service]
+Type=simple
+User=paluba
+Group=paluba
+WorkingDirectory=/var/www/paluba/my-site
+Environment=NODE_ENV=production
+Environment=EMDASH_SITE_URL=https://paluba.me
+Environment=SITE_URL=https://paluba.me
+Environment=HOST=127.0.0.1
+Environment=PORT=4321
+ExecStart=/usr/bin/env pnpm start
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

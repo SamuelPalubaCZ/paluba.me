@@ -1,0 +1,494 @@
+{
+	"$schema": "https://emdashcms.com/seed.schema.json",
+	"version": "1",
+	"meta": {
+		"name": "Samuel Paluba Portfolio",
+		"description": "Personal portfolio for Samuel Paluba",
+		"author": "Samuel Paluba"
+	},
+	"settings": {
+		"title": "Samuel Paluba",
+		"tagline": "Cybersecurity student and software builder in Prague, building ThinkHome and practical tools around IT infrastructure, AI workflows, education systems, and open technology."
+	},
+	"collections": [
+		{
+			"slug": "projects",
+			"label": "Projects",
+			"labelSingular": "Project",
+			"supports": ["drafts", "revisions", "search", "seo"],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "featured_image",
+					"label": "Featured Image",
+					"type": "image",
+					"required": true
+				},
+				{
+					"slug": "client",
+					"label": "Area",
+					"type": "string"
+				},
+				{
+					"slug": "year",
+					"label": "Year",
+					"type": "string"
+				},
+				{
+					"slug": "summary",
+					"label": "Summary",
+					"type": "text",
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				},
+				{
+					"slug": "url",
+					"label": "Project URL",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"slug": "pages",
+			"label": "Pages",
+			"labelSingular": "Page",
+			"supports": ["drafts", "revisions", "search"],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				}
+			]
+		}
+	],
+	"taxonomies": [
+		{
+			"name": "category",
+			"label": "Categories",
+			"labelSingular": "Category",
+			"hierarchical": false,
+			"collections": ["projects"],
+			"terms": [
+				{
+					"slug": "company",
+					"label": "Company"
+				},
+				{
+					"slug": "software",
+					"label": "Software"
+				},
+				{
+					"slug": "ai",
+					"label": "AI"
+				},
+				{
+					"slug": "open-tech",
+					"label": "Open Tech"
+				}
+			]
+		},
+		{
+			"name": "tag",
+			"label": "Tags",
+			"labelSingular": "Tag",
+			"hierarchical": false,
+			"collections": ["projects"],
+			"terms": [
+				{
+					"slug": "cybersecurity",
+					"label": "Cybersecurity"
+				},
+				{
+					"slug": "swift",
+					"label": "Swift"
+				},
+				{
+					"slug": "typescript",
+					"label": "TypeScript"
+				},
+				{
+					"slug": "python",
+					"label": "Python"
+				},
+				{
+					"slug": "infrastructure",
+					"label": "Infrastructure"
+				},
+				{
+					"slug": "education",
+					"label": "Education"
+				},
+				{
+					"slug": "sdk",
+					"label": "SDK"
+				}
+			]
+		}
+	],
+	"menus": [
+		{
+			"name": "primary",
+			"label": "Primary Navigation",
+			"items": [
+				{
+					"type": "custom",
+					"label": "Work",
+					"url": "/work"
+				},
+				{
+					"type": "custom",
+					"label": "About",
+					"url": "/about"
+				},
+				{
+					"type": "custom",
+					"label": "Contact",
+					"url": "/contact"
+				}
+			]
+		}
+	],
+	"content": {
+		"pages": [
+			{
+				"id": "about",
+				"slug": "about",
+				"status": "published",
+				"data": {
+					"title": "Samuel Paluba",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "I am a cybersecurity student based in Prague, Czech Republic, and the founder of ThinkHome. I build practical software, IT infrastructure, AI tooling, and education-system experiments around real problems instead of abstract demos.",
+									"_key": "about-1-span"
+								}
+							],
+							"_key": "about-1"
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "ThinkHome is my main current focus: a Prague-based IT company built around taking responsibility for business technology, internal tools, training, and custom software so teams can spend less time dealing with vendors, outages, and configuration issues.",
+									"_key": "about-2-span"
+								}
+							],
+							"_key": "about-2"
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "My school projects are often a sandbox for improving ThinkHome's services and internal tooling. Public work includes Apple-platform apps, API documentation, AI assistant skills, SDKs, and infrastructure experiments.",
+									"_key": "about-3-span"
+								}
+							],
+							"_key": "about-3"
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "I care about open software and hardware, Bitcoin, decentralized systems, and digital freedom. I prefer technology that gives people more agency over closed platforms, unnecessary control, and systems that make practical work harder.",
+									"_key": "about-4-span"
+								}
+							],
+							"_key": "about-4"
+						}
+					]
+				}
+			}
+		],
+		"projects": [
+			{
+				"id": "thinkhome",
+				"slug": "thinkhome",
+				"status": "published",
+				"data": {
+					"title": "ThinkHome",
+					"client": "Company",
+					"year": "2026",
+					"summary": "Practical IT management, training, and custom software for small and medium-sized businesses.",
+					"featured_image": {
+						"$media": {
+							"url": "https://avatars.githubusercontent.com/u/203321481?v=4",
+							"alt": "ThinkHome GitHub organization avatar",
+							"filename": "thinkhome-github-avatar.png"
+						}
+					},
+					"url": "https://thinkhome.cz",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "ThinkHome is Samuel's main current focus: practical IT management, training, and custom software for businesses that want clearer systems and fewer fragmented vendors.",
+									"_key": "thinkhome-1-span"
+								}
+							],
+							"_key": "thinkhome-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["company"],
+					"tag": ["infrastructure", "education"]
+				}
+			},
+			{
+				"id": "inzenyri",
+				"slug": "inzenyri",
+				"status": "published",
+				"data": {
+					"title": "Inzenyri",
+					"client": "Apple platforms",
+					"year": "2026",
+					"summary": "A modern iOS, macOS, and visionOS client for the Czech Bakalari school system.",
+					"featured_image": {
+						"$media": {
+							"url": "https://placehold.co/1200x900/111111/f7f7f2/png?text=Inzenyri",
+							"alt": "Inzenyri project card",
+							"filename": "inzenyri-project-card.png"
+						}
+					},
+					"url": "https://github.com/SamuelPalubaCZ/inzenyri",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Inzenyri explores a cleaner native Apple-platform experience for the Czech Bakalari school system across iOS, macOS, and visionOS.",
+									"_key": "inzenyri-1-span"
+								}
+							],
+							"_key": "inzenyri-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["software"],
+					"tag": ["swift", "education"]
+				}
+			},
+			{
+				"id": "bakalari-api-skill",
+				"slug": "bakalari-api-skill",
+				"status": "published",
+				"data": {
+					"title": "Bakalari API Skill",
+					"client": "AI tooling",
+					"year": "2026",
+					"summary": "A Claude skill for integrating with the Czech Bakalari API v3.",
+					"featured_image": {
+						"$media": {
+							"url": "https://placehold.co/1200x900/1f2937/f7f7f2/png?text=Bakalari+API+Skill",
+							"alt": "Bakalari API Skill project card",
+							"filename": "bakalari-api-skill-project-card.png"
+						}
+					},
+					"url": "https://github.com/SamuelPalubaCZ/bakalari-api-skill",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "A focused AI skill that packages Bakalari API v3 knowledge so assistants can work with the Czech school information system more reliably.",
+									"_key": "bakalari-skill-1-span"
+								}
+							],
+							"_key": "bakalari-skill-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["ai"],
+					"tag": ["education"]
+				}
+			},
+			{
+				"id": "ollama-collab-api",
+				"slug": "ollama-collab-api",
+				"status": "published",
+				"data": {
+					"title": "OllamaCollabApi",
+					"client": "AI infrastructure",
+					"year": "2025",
+					"summary": "A Google Colab notebook for deploying an Ollama API endpoint quickly.",
+					"featured_image": {
+						"$media": {
+							"url": "https://placehold.co/1200x900/0f172a/f7f7f2/png?text=OllamaCollabApi",
+							"alt": "OllamaCollabApi project card",
+							"filename": "ollama-collab-api-project-card.png"
+						}
+					},
+					"url": "https://github.com/SamuelPalubaCZ/OllamaCollabApi",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "An experiment in making local-model APIs easier to try by using a Colab notebook as the runtime environment.",
+									"_key": "ollama-1-span"
+								}
+							],
+							"_key": "ollama-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["ai", "open-tech"],
+					"tag": ["infrastructure"]
+				}
+			},
+			{
+				"id": "isds-bun",
+				"slug": "isds-bun",
+				"status": "published",
+				"data": {
+					"title": "ISDS Bun",
+					"client": "TypeScript SDK",
+					"year": "2026",
+					"summary": "A Bun-native SDK, CLI, mock server, and TUI foundation for Czech ISDS data boxes.",
+					"featured_image": {
+						"$media": {
+							"url": "https://placehold.co/1200x900/111827/f7f7f2/png?text=ISDS+Bun",
+							"alt": "ISDS Bun project card",
+							"filename": "isds-bun-project-card.png"
+						}
+					},
+					"url": "https://github.com/thinkhome-org/isds-bun",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "A Bun-native SDK and client foundation for working with ISDS data boxes from TypeScript, with CLI, mock-server, and TUI pieces kept separate from the publishable SDK.",
+									"_key": "isds-bun-1-span"
+								}
+							],
+							"_key": "isds-bun-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["software", "open-tech"],
+					"tag": ["typescript", "sdk", "infrastructure"]
+				}
+			},
+			{
+				"id": "fakturoid-typescript-api",
+				"slug": "fakturoid-typescript-api",
+				"status": "published",
+				"data": {
+					"title": "Fakturoid TypeScript API",
+					"client": "TypeScript SDK",
+					"year": "2026",
+					"summary": "A Bun-first TypeScript SDK for Fakturoid API v3 with OAuth and multi-tenant support.",
+					"featured_image": {
+						"$media": {
+							"url": "https://placehold.co/1200x900/27272a/f7f7f2/png?text=Fakturoid+TypeScript+API",
+							"alt": "Fakturoid TypeScript API project card",
+							"filename": "fakturoid-typescript-api-project-card.png"
+						}
+					},
+					"url": "https://github.com/thinkhome-org/fakturoid-typescript-api",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "A TypeScript SDK for Fakturoid API v3, designed around Bun, OAuth, and multi-tenant business software workflows.",
+									"_key": "fakturoid-1-span"
+								}
+							],
+							"_key": "fakturoid-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["software"],
+					"tag": ["typescript", "sdk"]
+				}
+			},
+			{
+				"id": "csob-ceb-bc",
+				"slug": "csob-ceb-bc",
+				"status": "published",
+				"data": {
+					"title": "CSOB CEB Business Connector",
+					"client": "Python SDK",
+					"year": "2026",
+					"summary": "A Python SDK for CSOB CEB Business Connector banking integrations.",
+					"featured_image": {
+						"$media": {
+							"url": "https://placehold.co/1200x900/18181b/f7f7f2/png?text=CSOB+CEB+Business+Connector",
+							"alt": "CSOB CEB Business Connector project card",
+							"filename": "csob-ceb-bc-project-card.png"
+						}
+					},
+					"url": "https://github.com/thinkhome-org/csob-ceb-bc",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "A Python SDK for CSOB CEB Business Connector, aimed at practical banking integrations and business infrastructure automation.",
+									"_key": "csob-ceb-bc-1-span"
+								}
+							],
+							"_key": "csob-ceb-bc-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["software"],
+					"tag": ["python", "sdk", "infrastructure"]
+				}
+			}
+		]
+	}
+}
