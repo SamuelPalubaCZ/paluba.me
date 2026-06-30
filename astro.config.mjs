@@ -1,7 +1,7 @@
 import cloudflare from "@astrojs/cloudflare";
 import react from "@astrojs/react";
 import { defineConfig, fontProviders } from "astro/config";
-import { d1, r2 } from "@emdash-cms/cloudflare";
+import { d1 } from "@emdash-cms/cloudflare";
 import emdash from "emdash/astro";
 
 const siteUrl = process.env.EMDASH_SITE_URL ?? process.env.SITE_URL ?? "https://paluba.me";
@@ -27,7 +27,6 @@ export default defineConfig({
 		emdash({
 			siteUrl,
 			database: d1({ binding: "DB", session: "auto" }),
-			storage: r2({ binding: "MEDIA" }),
 		}),
 	],
 	vite: {

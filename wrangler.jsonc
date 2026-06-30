@@ -14,19 +14,13 @@
 		{
 			"binding": "DB",
 			"database_name": "paluba-me",
-			"database_id": "REPLACE_WITH_D1_DATABASE_ID"
+			"database_id": "f5bf1ec0-a606-4ffb-a6f6-866f4fb4539b"
 		}
 	],
 	"kv_namespaces": [
 		{
 			"binding": "SESSION",
-			"id": "REPLACE_WITH_SESSION_KV_NAMESPACE_ID"
-		}
-	],
-	"r2_buckets": [
-		{
-			"binding": "MEDIA",
-			"bucket_name": "paluba-me-media"
+			"id": "57fc779a704d4a26af272be64201f2b5"
 		}
 	],
 	"images": {

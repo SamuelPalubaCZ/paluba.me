@@ -4,29 +4,38 @@ This project is configured for Cloudflare Workers/Pages-style hosting with:
 
 - Astro Cloudflare adapter
 - EmDash D1 database binding: `DB`
-- EmDash R2 media binding: `MEDIA`
 - Astro session KV binding: `SESSION`
 - Cloudflare Images binding: `IMAGES`
 
 ## Required Cloudflare Values
 
-The API token alone may not let Wrangler discover accounts in a non-interactive shell.
-Set the account id explicitly:
+The account id is already recorded in `.env.example`; set the API token only in
+your shell or CI secrets, not in git:
 
 ```bash
-export CLOUDFLARE_ACCOUNT_ID=<account-id>
+export CLOUDFLARE_ACCOUNT_ID=0862b64fc33c0302d2a4338826847e70
 export CLOUDFLARE_API_TOKEN=<api-token>
 ```
 
 ## Create Resources
 
+The D1 database and KV namespace have already been created and are wired in
+`wrangler.jsonc`:
+
+- D1 database: `paluba-me`
+- KV namespace: `paluba-me-SESSION`
+
+R2 is not required to serve the current portfolio. It is only needed if you want
+production CMS media uploads. Cloudflare currently reports that R2 must be
+enabled once in the dashboard before the bucket can be created. After enabling
+R2, run:
+
 ```bash
-pnpm exec wrangler d1 create paluba-me
 pnpm exec wrangler r2 bucket create paluba-me-media
-pnpm exec wrangler kv namespace create SESSION
 ```
 
-Copy the created D1 database id and KV namespace id into `wrangler.jsonc`.
+Then add the `MEDIA` R2 binding back to `wrangler.jsonc` and configure EmDash
+storage with `r2({ binding: "MEDIA" })` in `astro.config.mjs`.
 
 ## Build And Deploy
 
